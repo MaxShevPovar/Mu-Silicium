@@ -62,7 +62,7 @@
   #
   gSiliciumPkgTokenSpaceGuid.PcdFrameBufferWidth|1904
   gSiliciumPkgTokenSpaceGuid.PcdFrameBufferHeight|3040
-  gSiliciumPkgTokenSpaceGuid.PcdFrameBufferColorDepth|36
+  gSiliciumPkgTokenSpaceGuid.PcdFrameBufferColorDepth|32
 
   #
   # Platform PEI

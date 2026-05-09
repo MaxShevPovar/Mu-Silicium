@@ -46,8 +46,8 @@ APRIORI DXE {
   INF MdeModulePkg/Universal/ResetSystemRuntimeDxe/ResetSystemRuntimeDxe.inf
 
   INF Binaries/elden/QcomPkg/Drivers/PmicDxe/PmicDxeLa.inf
-  INF Binaries/elden/MdeModulePkg/Universal/Disk/DiskIoDxe/DiskIoDxe.inf
-  INF Binaries/elden/MdeModulePkg/Universal/Disk/PartitionDxe/PartitionDxe.inf
+  INF MdeModulePkg/Universal/Disk/DiskIoDxe/DiskIoDxe.inf
+  INF MdeModulePkg/Universal/Disk/PartitionDxe/PartitionDxe.inf
 
   INF MdeModulePkg/Universal/Disk/UnicodeCollation/EnglishDxe/EnglishDxe.inf
 
@@ -116,11 +116,7 @@ APRIORI DXE {
   INF MdeModulePkg/Universal/Console/ConSplitterDxe/ConSplitterDxe.inf
   INF MdeModulePkg/Universal/Console/GraphicsConsoleDxe/GraphicsConsoleDxe.inf
 
-  INF Binaries/elden/QcomPkg/Drivers/ASN1X509Dxe/ASN1X509Dxe.inf
-  INF Binaries/elden/QcomPkg/Drivers/SecRSADxe/SecRSADxe.inf
-  INF Binaries/elden/QcomPkg/Drivers/VerifiedBootDxe/VerifiedBootDxe.inf
   INF Binaries/elden/QcomPkg/Drivers/RscDxe/RscDxe.inf
   INF Binaries/elden/QcomPkg/Drivers/RmVmDxe/RmVmDxe.inf
-  INF Binaries/elden/QcomPkg/Drivers/QRKSDxe/QRKSDxe.inf
   INF Binaries/elden/QcomPkg/Drivers/BoardIdDxe/BoardIdDxe.inf
 }

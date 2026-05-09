@@ -9,7 +9,6 @@
   INF MdeModulePkg/Core/RuntimeDxe/RuntimeDxe.inf
   INF MdeModulePkg/Universal/SecurityStubDxe/SecurityStubDxe.inf
 
-  INF Binaries/elden/QcomPkg/Drivers/VerifiedBootDxe/VerifiedBootDxe.inf
   INF Binaries/elden/QcomPkg/Drivers/ShmBridgeDxe/ShmBridgeDxeLA.inf
   INF Binaries/elden/QcomPkg/Drivers/TzDxe/ScmDxeCompat.inf
   INF Binaries/elden/QcomPkg/Drivers/TzDxe/TzDxeLA.inf
@@ -43,8 +42,8 @@
 
   INF MdeModulePkg/Universal/DevicePathDxe/DevicePathDxe.inf
 
-  INF Binaries/elden/MdeModulePkg/Universal/Disk/DiskIoDxe/DiskIoDxe.inf
-  INF Binaries/elden/MdeModulePkg/Universal/Disk/PartitionDxe/PartitionDxe.inf
+  INF MdeModulePkg/Universal/Disk/DiskIoDxe/DiskIoDxe.inf
+  INF MdeModulePkg/Universal/Disk/PartitionDxe/PartitionDxe.inf
 
   INF FatPkg/EnhancedFatDxe/Fat.inf
   INF MdeModulePkg/Universal/Disk/UnicodeCollation/EnglishDxe/EnglishDxe.inf
@@ -89,7 +88,6 @@
   INF SiliciumPkg/Drivers/SimpleFbDxe/SimpleFbDxe.inf
 !endif
 
-  INF Binaries/elden/QcomPkg/Drivers/QRKSDxe/QRKSDxe.inf
   INF Binaries/elden/QcomPkg/Drivers/ButtonsDxe/ButtonsDxe.inf
   INF Binaries/elden/QcomPkg/Drivers/ChargerExDxe/ChargerExDxe.inf
   INF Binaries/elden/QcomPkg/Drivers/IPCCDxe/IPCCDxe.inf
@@ -115,8 +113,6 @@
   INF Binaries/elden/QcomPkg/Drivers/RNGDxe/RngDxe.inf
   INF Binaries/elden/QcomPkg/Drivers/PILDxe/PILDxe.inf
   INF Binaries/elden/QcomPkg/Drivers/PILProxyDxe/PILProxyDxe.inf
-  INF Binaries/elden/QcomPkg/Drivers/SecRSADxe/SecRSADxe.inf
-  INF Binaries/elden/QcomPkg/Drivers/ASN1X509Dxe/ASN1X509Dxe.inf
   INF Binaries/elden/QcomPkg/Drivers/SPSSDxe/SPSSDxe.inf
   INF Binaries/elden/QcomPkg/Drivers/FvUtilsDxe/FvUtilsEnhancedDxe.inf
   INF Binaries/elden/QcomPkg/Drivers/RmVmDxe/RmVmDxe.inf
