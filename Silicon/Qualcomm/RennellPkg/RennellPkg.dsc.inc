@@ -39,7 +39,6 @@
   #
   gArmTokenSpaceGuid.PcdGicDistributorBase|0x17A00000
   gArmTokenSpaceGuid.PcdGicRedistributorsBase|0x17A60000
-  gArmTokenSpaceGuid.PcdGicInterruptInterfaceBase|0x17A60000
 
   #
   # Timer
@@ -48,17 +47,15 @@
   gArmTokenSpaceGuid.PcdArmArchTimerIntrNum|18
 
   #
+  # Shared RFS Area
+  #
+  gQcomPkgTokenSpaceGuid.PcdDestinationVmCount|2
+
+  #
   # SMBIOS
   #
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Snapdragon (TM) 720G"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Snapdragon (TM) 720G @ 2.30 GHz"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorPartNumber|"SM7125"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMaxCpuFreq|2300
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1InstCacheSize|0x40
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1DataCacheSize|0x40
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel2CacheSize|0x100
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel3CacheSize|0x400
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemorySpeed|2100
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemoryType|30
 
 [LibraryClasses]
   #
@@ -70,8 +67,3 @@
   # ACPI Libraries
   #
   AcpiTableUpdateLib|RennellPkg/Library/AcpiTableUpdateLib/AcpiTableUpdateLib.inf
-
-  #
-  # Custom Libraries
-  #
-  RFSProtectionLib|RennellPkg/Library/RFSProtectionLib/RFSProtectionLib.inf

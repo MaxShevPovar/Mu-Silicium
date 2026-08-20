@@ -39,7 +39,6 @@
   #
   gArmTokenSpaceGuid.PcdGicDistributorBase|0x17A00000
   gArmTokenSpaceGuid.PcdGicRedistributorsBase|0x17B00000
-  gArmTokenSpaceGuid.PcdGicInterruptInterfaceBase|0x17B00000
 
   #
   # Timer
@@ -50,22 +49,11 @@
   #
   # SMBIOS
   #
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Snapdragon (TM) 835"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Snapdragon (TM) 835 @ 2.45 GHz"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorPartNumber|"MSM8998"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMaxCpuFreq|2450
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1InstCacheSize|0x40
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1DataCacheSize|0x40
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel2CacheSize|0x800
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemorySpeed|1866                           # Unoffical Value
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemoryType|30
 
 [LibraryClasses]
   #
   # SEC Libraries
   #
   PlatformSecLib|NazgulPkg/Library/PlatformSecLib/PlatformSecLib.inf
-
-  #
-  # ACPI Libraries
-  #
-  AcpiTableUpdateLib|NazgulPkg/Library/AcpiTableUpdateLib/AcpiTableUpdateLib.inf

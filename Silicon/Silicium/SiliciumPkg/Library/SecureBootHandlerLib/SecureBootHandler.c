@@ -14,7 +14,6 @@
 #include <Library/PcdLib.h>
 
 #include <Protocol/SimpleFileSystem.h>
-#include <Protocol/Hash.h>
 
 #include <Guid/FileInfo.h>
 
@@ -38,7 +37,7 @@ ReplaceSiPolicy (
   UINT8   NewHash[SHA256_DIGEST_SIZE];
 
   // Verify Arguments
-  if (CurrentFile == NULL || !CurrentFileSize) {
+  if (CurrentFile == NULL || NewFile == NULL) {
     return TRUE;
   }
 
@@ -74,6 +73,11 @@ GetSiPolicyContent (
   EFI_STATUS     Status       = EFI_SUCCESS;
   EFI_FILE_INFO *FileInfo     = NULL;
   UINTN          FileInfoSize = 0;
+
+  // Verify Parameters
+  if (FsVolume == NULL || File == NULL || Content == NULL || ContentSize == NULL) {
+    return;
+  }
 
   // Get File Info Size
   Status = FsVolume->GetInfo (File, &gEfiFileInfoGuid, &FileInfoSize, NULL);
@@ -118,17 +122,25 @@ cleanup:
     FreePool (FileInfo);
   }
 }
+#endif
 
 VOID
 ManageSiPolicy (
   IN EFI_FILE_PROTOCOL *FsVolume,
   IN EFI_FILE_HANDLE    File)
 {
-  EFI_STATUS  Status                = EFI_SUCCESS;
-  UINT8      *FileContent           = NULL;
-  UINT8      *CustomFileContent     = NULL;
-  UINTN       FileContentSize       = 0;
-  UINTN       CustomFileContentSize = 0;
+  EFI_STATUS  Status;
+
+  // Verify Parameter
+  if (FsVolume == NULL || File == NULL) {
+    return;
+  }
+
+#if ENABLE_SECUREBOOT == 1
+  UINT8 *FileContent           = NULL;
+  UINT8 *CustomFileContent     = NULL;
+  UINTN  FileContentSize       = 0;
+  UINTN  CustomFileContentSize = 0;
 
   // Get Custom "SiPolicy.p7b" File
   Status = GetSectionFromAnyFv (FixedPcdGetPtr (PcdSiPolicyFile), EFI_SECTION_RAW, 0, (VOID *)&CustomFileContent, &CustomFileContentSize);
@@ -148,10 +160,10 @@ ManageSiPolicy (
       DEBUG ((EFI_D_ERROR, "%a: Failed to Write new SiPolicy Data! Status = %r\n", __FUNCTION__, Status));
       goto cleanup;
     }
-
-    // Show Progress
-    DEBUG ((EFI_D_WARN, "%a: Successfully Wrote SiPolicy Data\n", __FUNCTION__));
   }
+
+  // Close SiPolicy
+  FsVolume->Close (File);
 
 cleanup:
   // Free Custom SiPolicy Content Buffer
@@ -163,48 +175,32 @@ cleanup:
   if (FileContent != NULL) {
     FreePool (FileContent);
   }
-}
+#else
+  // Delete "SiPolicy.p7b" File
+  Status = FsVolume->Delete (File);
+  if (EFI_ERROR (Status)) {
+    DEBUG ((EFI_D_ERROR, "%a: Failed to Delete \"SiPolicy.p7b\"! Status = %r\n", __FUNCTION__, Status));
+    return;
+  }
 #endif
+}
 
 VOID
-EFIAPI
-FileSystemCallback (
-  IN EFI_EVENT  Event,
-  IN VOID      *Context)
+ProcessFileSystem (IN EFI_FILE_PROTOCOL *FsVolume)
 {
-  EFI_STATUS                       Status;
-  EFI_SIMPLE_FILE_SYSTEM_PROTOCOL *mSfsProtocol;
-  EFI_FILE_PROTOCOL               *FsVolume;
-  EFI_FILE_HANDLE                  BootmgfwFile;
-  EFI_FILE_HANDLE                  SiPolicyFile;
-  EFI_HANDLE                      *SfsProtocolHandle;
-  UINTN                            NumOfHandles;
+  EFI_STATUS      Status;
+  EFI_FILE_HANDLE BootmgfwFile;
+  EFI_FILE_HANDLE SiPolicyFile;
 
-  // Locate SFS Protocol Handle
-  Status = gBS->LocateHandleBuffer (ByRegisterNotify, NULL, RegisteredSfsProtocol, &NumOfHandles, &SfsProtocolHandle);
-  if (EFI_ERROR (Status)) {
-    DEBUG ((EFI_D_ERROR, "%a: Failed to Locate SFS Protocol Handle! Status = %r\n", __FUNCTION__, Status));
-    goto cleanup;
-  }
-
-  // Locate SFS Protocol
-  Status = gBS->HandleProtocol (SfsProtocolHandle[0], &gEfiSimpleFileSystemProtocolGuid, (VOID *)&mSfsProtocol);
-  if (EFI_ERROR (Status)) {
-    DEBUG ((EFI_D_ERROR, "%a: Failed to Locate SFS Protocol! Status = %r\n", __FUNCTION__, Status));
-    goto cleanup;
-  }
-
-  // Open FS Volume
-  Status = mSfsProtocol->OpenVolume (mSfsProtocol, &FsVolume);
-  if (EFI_ERROR (Status)) {
-    DEBUG ((EFI_D_ERROR, "%a: Failed to Open FS Volume! Status = %r\n", __FUNCTION__, Status));
-    goto cleanup;
+  // Verify Parameter
+  if (FsVolume == NULL) {
+    return;
   }
 
   // Verify "bootmgfw.efi" Existence
   Status = FsVolume->Open (FsVolume, &BootmgfwFile, EFI_BOOTMGFW_FILE_PATH, EFI_FILE_MODE_READ, EFI_FILE_READ_ONLY | EFI_FILE_SYSTEM);
   if (EFI_ERROR (Status)) {
-    goto cleanup;
+    return;
   }
 
   // Close "bootmgfw.efi"
@@ -214,7 +210,7 @@ FileSystemCallback (
   Status = FsVolume->Open (FsVolume, &SiPolicyFile, EFI_SIPOLICY_FILE_PATH, EFI_FILE_MODE_READ | EFI_FILE_MODE_WRITE, 0);
   if (EFI_ERROR (Status) && Status != EFI_NOT_FOUND) {
     DEBUG ((EFI_D_ERROR, "%a: Failed to Open \"SiPolicy.p7b\"! Status = %r\n", __FUNCTION__, Status));
-    goto cleanup;
+    return;
   }
 
 #if ENABLE_SECUREBOOT == 1
@@ -223,44 +219,79 @@ FileSystemCallback (
     Status = FsVolume->Open (FsVolume, &SiPolicyFile, EFI_SIPOLICY_FILE_PATH, EFI_FILE_MODE_READ | EFI_FILE_MODE_WRITE | EFI_FILE_MODE_CREATE, 0);
     if (EFI_ERROR (Status)) {
       DEBUG ((EFI_D_ERROR, "%a: Failed to Create \"SiPolicy.p7b\"! Status = %r\n", __FUNCTION__, Status));
-      goto cleanup;
+      return;
     }
   }
-
-  // Manage SiPolicy
-  ManageSiPolicy (FsVolume, SiPolicyFile);
-
-  // Close SiPolicy
-  FsVolume->Close (SiPolicyFile);
 #else
   // Check SiPolicy Presence
   if (Status == EFI_NOT_FOUND) {
-    goto cleanup;
+    return;
   }
-
-  // Delete "SiPolicy.p7b" File
-  Status = FsVolume->Delete (SiPolicyFile);
-  if (EFI_ERROR (Status)) {
-    DEBUG ((EFI_D_ERROR, "%a: Failed to Delete \"SiPolicy.p7b\"! Status = %r\n", __FUNCTION__, Status));
-    goto cleanup;
-  }
-
-  // Show Progress
-  DEBUG ((EFI_D_WARN, "%a: Successfully Deleted SiPolicy\n", __FUNCTION__));
 #endif
 
-cleanup:
+  // Manage SiPolicy
+  ManageSiPolicy (FsVolume, SiPolicyFile);
+}
+
+VOID
+EFIAPI
+FileSystemCallback (
+  IN EFI_EVENT  Event,
+  IN VOID      *Context)
+{
+  EFI_STATUS                       Status      = EFI_SUCCESS;
+  EFI_SIMPLE_FILE_SYSTEM_PROTOCOL *SfsProtocol = NULL;
+  EFI_FILE_PROTOCOL               *FsVolume    = NULL;
+  EFI_HANDLE                      *SfsBuffer   = NULL;
+  UINTN                            SfsCount    = 0;
+
+  while (TRUE) {
+    // Locate SFS Protocol Handles
+    Status = gBS->LocateHandleBuffer (ByRegisterNotify, NULL, RegisteredSfsProtocol, &SfsCount, &SfsBuffer);
+    if (EFI_ERROR (Status) && Status != EFI_NOT_FOUND) {
+      DEBUG ((EFI_D_ERROR, "%a: Failed to Locate SFS Protocol Handles! Status = %r\n", __FUNCTION__, Status));
+      continue;
+    }
+
+    // Check SFS Handle Presense
+    if (Status == EFI_NOT_FOUND) {
+      break;
+    }
+
+    // Get SFS Protocol
+    Status = gBS->HandleProtocol (SfsBuffer[0], &gEfiSimpleFileSystemProtocolGuid, (VOID *)&SfsProtocol);
+    if (EFI_ERROR (Status)) {
+      DEBUG ((EFI_D_ERROR, "%a: Failed to get SFS Protocol! Status = %r\n", __FUNCTION__, Status));
+      continue;
+    }
+
+    // Open FS Volume
+    Status = SfsProtocol->OpenVolume (SfsProtocol, &FsVolume);
+    if (EFI_ERROR (Status)) {
+      DEBUG ((EFI_D_ERROR, "%a: Failed to Open FS Volume! Status = %r\n", __FUNCTION__, Status));
+      continue;
+    }
+
+    // Process File System
+    ProcessFileSystem (FsVolume);
+
+    // Free Buffer
+    if (SfsBuffer != NULL) {
+      FreePool (SfsBuffer);
+    }
+  }
+
   // Free Buffer
-  if (SfsProtocolHandle != NULL) {
-    FreePool (SfsProtocolHandle);
+  if (SfsBuffer != NULL) {
+    FreePool (SfsBuffer);
   }
 }
 
 EFI_STATUS
 SetupSecureBoot ()
 {
-  EFI_STATUS Status;
-  EFI_EVENT  CallbackEvent;
+  EFI_STATUS  Status;
+  EFI_EVENT   CallbackEvent;
 
 #if ENABLE_SECUREBOOT == 1
   // Enroll Secure Boot Keys
@@ -284,6 +315,9 @@ SetupSecureBoot ()
     DEBUG ((EFI_D_ERROR, "%a: Failed to Register Callback Event!\n", __FUNCTION__));
     return Status;
   }
+
+  // Process Already Present File Systems
+  gBS->SignalEvent (CallbackEvent);
 
   return EFI_SUCCESS;
 }

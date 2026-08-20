@@ -12,8 +12,6 @@ APRIORI DXE {
   INF EmbeddedPkg/MetronomeDxe/MetronomeDxe.inf
   INF ArmPkg/Drivers/TimerDxe/TimerDxe.inf
 
-  INF QcomPkg/Drivers/RamManagerDxe/RamManagerDxe.inf
-
   INF Binaries/lemonade/QcomPkg/Drivers/SmemDxe/SmemDxe.inf
   INF Binaries/lemonade/QcomPkg/Drivers/DALSYSDxe/DALSYSDxe.inf
   INF Binaries/lemonade/QcomPkg/Drivers/HWIODxe/HWIODxe.inf
@@ -35,8 +33,8 @@ APRIORI DXE {
   INF Binaries/lemonade/QcomPkg/Drivers/SPMIDxe/SPMIDxe.inf
   INF Binaries/lemonade/QcomPkg/Drivers/PmicDxe/PmicDxeLa.inf
 
-  INF MdeModulePkg/Universal/Disk/DiskIoDxe/DiskIoDxe.inf
-  INF MdeModulePkg/Universal/Disk/PartitionDxe/PartitionDxe.inf
+  INF Binaries/lemonade/MdeModulePkg/Universal/Disk/DiskIoDxe/DiskIoDxe.inf
+  INF Binaries/lemonade/MdeModulePkg/Universal/Disk/PartitionDxe/PartitionDxe.inf
   INF MdeModulePkg/Universal/Disk/UnicodeCollation/EnglishDxe/EnglishDxe.inf
 
   INF Binaries/lemonade/QcomPkg/Drivers/SdccDxe/SdccDxe.inf

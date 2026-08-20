@@ -39,7 +39,6 @@
   #
   gArmTokenSpaceGuid.PcdGicDistributorBase|0xF200000
   gArmTokenSpaceGuid.PcdGicRedistributorsBase|0xF300000
-  gArmTokenSpaceGuid.PcdGicInterruptInterfaceBase|0xF300000
 
   #
   # Timer
@@ -51,22 +50,11 @@
   #
   # SMBIOS
   #
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Snapdragon (TM) 665"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Snapdragon (TM) 665 @ 2.00 GHz"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorPartNumber|"SM6125"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMaxCpuFreq|2000
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1InstCacheSize|0x40
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1DataCacheSize|0x40
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel2CacheSize|0x400
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemorySpeed|1866                           # Unoffical Value
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemoryType|30
 
 [LibraryClasses]
   #
   # SEC Libraries
   #
   PlatformSecLib|NicobarPkg/Library/PlatformSecLib/PlatformSecLib.inf
-
-  #
-  # ACPI Libraries
-  #
-  AcpiTableUpdateLib|NicobarPkg/Library/AcpiTableUpdateLib/AcpiTableUpdateLib.inf

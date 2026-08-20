@@ -46,7 +46,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Mi Max 3"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"nitrogen"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Mi_Max_3_nitrogen"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Mi Max 3"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"Mi Max 3"
 
   #
   # Simple Frame Buffer
@@ -59,11 +59,6 @@
   # Platform PEI
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
-
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|TRUE
 
 [LibraryClasses]
   #

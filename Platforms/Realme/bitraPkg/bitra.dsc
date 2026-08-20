@@ -53,7 +53,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"GT NEO 2"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"bitra"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"GT NEO 2"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"GT NEO 2"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"GT NEO 2"
 
   #
   # Simple Frame Buffer
@@ -66,11 +66,6 @@
   # Platform PEI
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
-
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|FALSE
 
 [LibraryClasses]
   #

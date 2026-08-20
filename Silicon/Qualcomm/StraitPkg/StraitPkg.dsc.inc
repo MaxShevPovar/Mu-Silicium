@@ -39,7 +39,6 @@
   #
   gArmTokenSpaceGuid.PcdGicDistributorBase|0x0F200000
   gArmTokenSpaceGuid.PcdGicRedistributorsBase|0x0F240000
-  gArmTokenSpaceGuid.PcdGicInterruptInterfaceBase|0x0F240000
 
   #
   # Timer
@@ -51,14 +50,8 @@
   #
   # SMBIOS
   #
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Snapdragon (TM) 695"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Snapdragon (TM) 695 @ 2.20 GHz"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorPartNumber|"SM6375"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMaxCpuFreq|2200
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1InstCacheSize|0x20
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1DataCacheSize|0x40
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel2CacheSize|0x200
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemorySpeed|2133
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemoryType|30
 
 [LibraryClasses]
   #

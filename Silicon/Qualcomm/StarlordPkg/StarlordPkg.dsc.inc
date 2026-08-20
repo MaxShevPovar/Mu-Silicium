@@ -39,7 +39,6 @@
   #
   gArmTokenSpaceGuid.PcdGicDistributorBase|0x17A00000
   gArmTokenSpaceGuid.PcdGicRedistributorsBase|0x17B00000
-  gArmTokenSpaceGuid.PcdGicInterruptInterfaceBase|0x17B00000
 
   #
   # Timer
@@ -50,22 +49,5 @@
   #
   # SMBIOS
   #
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Snapdragon (TM) 660"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Snapdragon (TM) 660 @ 2.20 GHz"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorPartNumber|"SDM660"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMaxCpuFreq|2200
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1InstCacheSize|0x40
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1DataCacheSize|0x40
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel2CacheSize|0x400
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemorySpeed|1866
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemoryType|30
-
-[LibraryClasses]
-  #
-  # SEC Libraries
-  #
-  PlatformSecLib|StarlordPkg/Library/PlatformSecLib/PlatformSecLib.inf
-
-  #
-  # ACPI Libraries
-  #
-  AcpiTableUpdateLib|StarlordPkg/Library/AcpiTableUpdateLib/AcpiTableUpdateLib.inf

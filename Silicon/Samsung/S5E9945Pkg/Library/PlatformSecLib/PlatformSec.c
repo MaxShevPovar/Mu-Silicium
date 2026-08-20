@@ -9,40 +9,6 @@
 
 #include "PlatformRegisters.h"
 
-STATIC
-ARM_CORE_INFO
-mArmPlatformMpCoreInfoTable[] = {
-  // Mpidr, MailboxSetAddress, MailboxGetAddress, MailboxClearAddress, MailboxClearValue
-
-  // Cluster 0
-  { 0x000, 0, 0, 0, 0xFFFFFFFF },
-  { 0x100, 0, 0, 0, 0xFFFFFFFF },
-  { 0x200, 0, 0, 0, 0xFFFFFFFF },
-  { 0x300, 0, 0, 0, 0xFFFFFFFF },
-
-  // Cluster 1
-  { 0x400, 0, 0, 0, 0xFFFFFFFF },
-  { 0x500, 0, 0, 0, 0xFFFFFFFF },
-  { 0x600, 0, 0, 0, 0xFFFFFFFF },
-
-  // Cluster 2
-  { 0x700, 0, 0, 0, 0xFFFFFFFF },
-  { 0x800, 0, 0, 0, 0xFFFFFFFF },
-
-  // Cluster 3
-  { 0x900, 0, 0, 0, 0xFFFFFFFF }
-};
-
-VOID
-GetPlatformCoreTable (
-  OUT ARM_CORE_INFO **ArmCoreTable,
-  OUT UINTN          *CoreCount)
-{
-  // Pass Data
-  *ArmCoreTable = mArmPlatformMpCoreInfoTable;
-  *CoreCount    = ARRAY_SIZE (mArmPlatformMpCoreInfoTable);
-}
-
 VOID
 DisableWatchdogTimer ()
 {
@@ -50,20 +16,14 @@ DisableWatchdogTimer ()
   EFI_MEMORY_REGION_DESCRIPTOR WatchdogTimerRegion;
   UINT32                       Value;
 
-  // Locate Watchdog Timner Memory Region
+  // Locate Watchdog Timer Memory Region
   Status = LocateMemoryRegionByName ("Watchdog Timer", &WatchdogTimerRegion);
   if (EFI_ERROR (Status)) {
     return;
   }
 
-  // Get current Config
-  Value = MmioRead32 (WatchdogTimerRegion.Address);
-
-  // Update Config
-  Value &= ~WATCHDOG_ENABLE;
-
-  // Write new Config
-  MmioWrite32 (WatchdogTimerRegion.Address, Value);
+  // Disable Watchdog Timer
+  MmioAnd32 (WatchdogTimerRegion.Address, ~WATCHDOG_ENABLE);
 }
 
 VOID

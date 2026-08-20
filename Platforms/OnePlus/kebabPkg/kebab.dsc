@@ -53,7 +53,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"8T"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"kebab"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"8T_kebab"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"8T"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"8T"
 
   #
   # Simple Frame Buffer
@@ -66,11 +66,6 @@
   # Platform PEI
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
-
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|FALSE
 
 [LibraryClasses]
   #

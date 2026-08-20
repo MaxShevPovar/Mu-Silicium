@@ -53,7 +53,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"13"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"dodge"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"CPH2653"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"23893"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"23893"
 
   #
   # Simple Frame Buffer
@@ -66,13 +66,6 @@
   # Platform PEI
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
-  gQcomPkgTokenSpaceGuid.PcdDtbExtensionAddr|0xA703C0E8
-  gQcomPkgTokenSpaceGuid.PcdSchedulerInterfaceAddr|0xA703CE50
-
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|FALSE
 
 [LibraryClasses]
   #

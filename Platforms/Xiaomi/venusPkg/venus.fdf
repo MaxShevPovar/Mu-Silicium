@@ -18,7 +18,7 @@
 #
 ################################################################################
 
-[FD.venus_UEFI]
+[FD.SILICIUM_UEFI]
 BaseAddress   = $(FD_BASE)|gArmTokenSpaceGuid.PcdFdBaseAddress # The base address of the FLASH Device.
 Size          = $(FD_SIZE)|gArmTokenSpaceGuid.PcdFdSize        # The size in bytes of the FLASH Device
 ErasePolarity = 1
@@ -85,7 +85,7 @@ READ_LOCK_STATUS   = TRUE
 
   # BDS
   INF MdeModulePkg/Universal/SmbiosDxe/SmbiosDxe.inf
-  INF QcomPkg/Drivers/SmBiosTableDxe/SmBiosTableDxe.inf
+  INF SiliciumPkg/Drivers/SmBiosTableDxe/SmBiosTableDxe.inf
 
   # ACPI
   INF MdeModulePkg/Universal/Acpi/AcpiTableDxe/AcpiTableDxe.inf

@@ -14,6 +14,11 @@
   #
   USE_PHYSICAL_TIMER                         = 0
 
+  #
+  # KEP
+  #
+  HAS_CNTFRQ_EL0_EMPTY_ERRATA                = 1
+
 !include SamsungPkg/SamsungPkg.dsc.inc
 
 [BuildOptions]
@@ -29,8 +34,7 @@
   #
   # GIC
   #
-  gArmTokenSpaceGuid.PcdGicDistributorBase|0x104E0000
-  gArmTokenSpaceGuid.PcdGicRedistributorsBase|0x104E2000
+  gArmTokenSpaceGuid.PcdGicDistributorBase|0x104E1000
   gArmTokenSpaceGuid.PcdGicInterruptInterfaceBase|0x104E2000
 
   #
@@ -43,12 +47,6 @@
   #
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Exynos (TM) 7870 @ 1.60 GHz"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorPartNumber|"S5E7870"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMaxCpuFreq|1600
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1InstCacheSize|0x100                       # Unofficial Value
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1DataCacheSize|0x100                       # Unofficial Value
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel2CacheSize|0x200                           # Unofficial Value
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemorySpeed|933                                 # Unofficial Value
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemoryType|29
 
 [LibraryClasses]
   #
@@ -62,9 +60,9 @@
   IoMmuLib|MdeModulePkg/Library/IoMmuLibNull/IoMmuLibNull.inf
 
   #
-  # Custom Libraries
+  # IO Libraries
   #
-  GpioBankLib|S5E7870Pkg/Library/GpioBankLib/GpioBankLib.inf
+  GpioLib|S5E7870Pkg/Library/GpioLib/GpioLib.inf
 
 [Components]
   #
