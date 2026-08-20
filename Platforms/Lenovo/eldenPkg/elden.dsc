@@ -55,7 +55,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Legion Y700 Gen 4"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"elden"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"TB322FC"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"TB322FC"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"TB322FC"
 
   #
   # Simple Frame Buffer
@@ -68,13 +68,6 @@
   # Platform PEI
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
-  gQcomPkgTokenSpaceGuid.PcdDtbExtensionAddr|0xA703C0E8
-  gQcomPkgTokenSpaceGuid.PcdSchedulerInterfaceAddr|0xA703CE48
-
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|TRUE
 
 [LibraryClasses]
   #
