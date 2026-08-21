@@ -9,8 +9,6 @@ APRIORI DXE {
   INF MdeModulePkg/Universal/StatusCodeHandler/RuntimeDxe/StatusCodeHandlerRuntimeDxe.inf
   INF MdeModulePkg/Core/RuntimeDxe/RuntimeDxe.inf
 
-  INF Binaries/elden/QcomPkg/Drivers/QcomWDogDxe/QcomWDogDxe.inf
-
   INF ArmPkg/Drivers/CpuDxe/CpuDxe.inf
   INF ArmPkg/Drivers/ArmGicDxe/ArmGicDxe.inf
   INF EmbeddedPkg/MetronomeDxe/MetronomeDxe.inf
@@ -30,7 +28,6 @@ APRIORI DXE {
   INF Binaries/elden/QcomPkg/Drivers/RpmhDxe/RpmhDxe.inf
   INF Binaries/elden/QcomPkg/Drivers/MailboxDxe/MailboxDxe.inf
   INF Binaries/elden/QcomPkg/Drivers/QcomScmiDxe/QcomScmiDxe.inf
-  INF Binaries/elden/QcomPkg/Drivers/CalibrationDxe/CalibrationDxe.inf
   INF Binaries/elden/QcomPkg/Drivers/VcsDxe/VcsDxe.inf
   INF Binaries/elden/QcomPkg/Drivers/ClockDxe/ClockDxe.inf
   INF Binaries/elden/QcomPkg/Drivers/ICBDxe/ICBDxe.inf
@@ -65,7 +62,6 @@ APRIORI DXE {
 !else
   INF SiliciumPkg/Drivers/SimpleFbDxe/SimpleFbDxe.inf
 !endif
-  INF Binaries/elden/QcomPkg/Drivers/FvUtilsDxe/FvUtilsEnhancedDxe.inf
   INF Binaries/elden/QcomPkg/Drivers/PILProxyDxe/PILProxyDxe.inf
   INF Binaries/elden/QcomPkg/Drivers/PILDxe/PILDxe.inf
   INF Binaries/elden/QcomPkg/Drivers/SPSSDxe/SPSSDxe.inf
@@ -79,11 +75,9 @@ APRIORI DXE {
   INF MdeModulePkg/Universal/DevicePathDxe/DevicePathDxe.inf
   INF MdeModulePkg/Universal/CapsuleRuntimeDxe/CapsuleRuntimeDxe.inf
   INF MdeModulePkg/Universal/HiiDatabaseDxe/HiiDatabaseDxe.inf
-  INF Binaries/elden/QcomPkg/Drivers/FontDxe/FontDxe.inf
   INF MdeModulePkg/Universal/BdsDxe/BdsDxe.inf
 
   INF Binaries/elden/QcomPkg/Drivers/SPIDxe/SPIDxe.inf
-  INF Binaries/elden/QcomPkg/Drivers/HSUartDxe/HSUartDxe.inf
   INF Binaries/elden/QcomPkg/Drivers/PmicGlinkDxe/PmicGlinkDxe.inf
   INF Binaries/elden/QcomPkg/Drivers/UsbPwrCtrlDxe/UsbPwrCtrlDxe.inf
   INF Binaries/elden/QcomPkg/Drivers/QcomChargerDxe/QcomChargerDxeLA.inf
@@ -115,6 +109,5 @@ APRIORI DXE {
   INF MdeModulePkg/Universal/Console/GraphicsConsoleDxe/GraphicsConsoleDxe.inf
 
   INF Binaries/elden/QcomPkg/Drivers/RscDxe/RscDxe.inf
-  INF Binaries/elden/QcomPkg/Drivers/RmVmDxe/RmVmDxe.inf
   INF Binaries/elden/QcomPkg/Drivers/BoardIdDxe/BoardIdDxe.inf
 }

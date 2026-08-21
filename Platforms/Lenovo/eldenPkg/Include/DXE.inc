@@ -12,7 +12,6 @@
   INF Binaries/elden/QcomPkg/Drivers/ShmBridgeDxe/ShmBridgeDxeLA.inf
   INF Binaries/elden/QcomPkg/Drivers/TzDxe/ScmDxeCompat.inf
   INF Binaries/elden/QcomPkg/Drivers/TzDxe/TzDxeLA.inf
-  INF Binaries/elden/QcomPkg/Drivers/PsStateDxe/PsStateDxe.inf
 
   INF MdeModulePkg/Universal/WatchdogTimerDxe/WatchdogTimer.inf
   INF MdeModulePkg/Universal/CapsuleRuntimeDxe/CapsuleRuntimeDxe.inf
@@ -23,9 +22,6 @@
   INF EmbeddedPkg/MetronomeDxe/MetronomeDxe.inf
   INF MdeModulePkg/Universal/HiiDatabaseDxe/HiiDatabaseDxe.inf
 
-  INF Binaries/elden/QcomPkg/Drivers/FontDxe/FontDxe.inf
-  INF Binaries/elden/QcomPkg/Drivers/QcomWDogDxe/QcomWDogDxe.inf
-
   INF ArmPkg/Drivers/ArmGicDxe/ArmGicDxe.inf
   INF ArmPkg/Drivers/TimerDxe/TimerDxe.inf
 
@@ -34,7 +30,6 @@
   INF Binaries/elden/QcomPkg/Drivers/DALSYSDxe/DALSYSDxe.inf
   INF Binaries/elden/QcomPkg/Drivers/HALIOMMUDxe/HALIOMMUDxe.inf
   INF Binaries/elden/QcomPkg/Drivers/HWIODxe/HWIODxe.inf
-  INF Binaries/elden/QcomPkg/Drivers/HSUartDxe/HSUartDxe.inf
   INF Binaries/elden/QcomPkg/Drivers/I2CDxe/I2CDxe.inf
   INF Binaries/elden/QcomPkg/Drivers/TLMMDxe/TLMMDxe.inf
   INF Binaries/elden/QcomPkg/Drivers/QupDxe/QupDxe.inf
@@ -56,7 +51,6 @@
   INF Binaries/elden/QcomPkg/Drivers/ULogDxe/ULogDxe.inf
   INF Binaries/elden/QcomPkg/Drivers/MailboxDxe/MailboxDxe.inf
   INF Binaries/elden/QcomPkg/Drivers/QcomScmiDxe/QcomScmiDxe.inf
-  INF Binaries/elden/QcomPkg/Drivers/CalibrationDxe/CalibrationDxe.inf
   INF Binaries/elden/QcomPkg/Drivers/VcsDxe/VcsDxe.inf
   INF Binaries/elden/QcomPkg/Drivers/ClockDxe/ClockDxe.inf
   INF Binaries/elden/QcomPkg/Drivers/SPMIDxe/SPMIDxe.inf
@@ -66,7 +60,6 @@
 
   INF Binaries/elden/QcomPkg/Drivers/RscDxe/RscDxe.inf
   INF Binaries/elden/QcomPkg/Drivers/BoardIdDxe/BoardIdDxe.inf
-  INF Binaries/elden/QcomPkg/Drivers/I2CHapticDxe/I2CHapticDxe.inf
 
   INF EmbeddedPkg/SimpleTextInOutSerial/SimpleTextInOutSerial.inf
   INF MdeModulePkg/Universal/PrintDxe/PrintDxe.inf
@@ -114,7 +107,3 @@
   INF Binaries/elden/QcomPkg/Drivers/PILDxe/PILDxe.inf
   INF Binaries/elden/QcomPkg/Drivers/PILProxyDxe/PILProxyDxe.inf
   INF Binaries/elden/QcomPkg/Drivers/SPSSDxe/SPSSDxe.inf
-  INF Binaries/elden/QcomPkg/Drivers/FvUtilsDxe/FvUtilsEnhancedDxe.inf
-  INF Binaries/elden/QcomPkg/Drivers/RmVmDxe/RmVmDxe.inf
-  INF Binaries/elden/QcomPkg/Drivers/ParserDxe/ParserEnhancedDxe.inf
-  INF Binaries/elden/QcomPkg/Drivers/SerialPortDxe/SerialPortDxe.inf
